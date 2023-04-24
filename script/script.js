@@ -1,40 +1,49 @@
-import books from "./data.js";
+import data from "./data.js";
+const booksContainer = document.querySelector(".books-container");
+const form = document.querySelector('.form')
+const title = document.querySelector('#title')
+const author = document.querySelector('#author')
+let books = data;
 
-const containerEl = document.querySelector(".books-container");
-const formEl = document.querySelector(".form");
 class BooksCollection {
-  static add(title, author, id = books.length) {
-    books.push({ id, title, author });
-  }
+  static add = (title, author, id = Date.now()) => {
+    books.push({title, author, id});
+    console.log(books);
+    loadData()
+  };
 
-  static delete(id) {
-    books = books.filter((book) => book.id != id);
-  }
+  static remove = (id) => {
+    const remainingData = books.filter((book) => book.id != id);
+    books = remainingData;
+    console.log(books);
+    loadData();
+  };
 }
 
-formEl.addEventListener("submit", (e) => {
-  console.log("submited");
-  const title = document.querySelector(" #title").value;
-  const author = document.querySelector("#author").value;
-  console.log(title, author);
-
-  BooksCollection.add(title, author);
-  renderBooks();
-  console.log(books);
-});
-
-const renderBooks = () => {
-  containerEl.innerHTML = "";
+const loadData = () => {
+  booksContainer.innerHTML = "";
   books.forEach((book) => {
-    const bookEl = `<div class="book">
-    <p class="title">${book.title}</p>
-    <p class="author">${book.author}</p>
-    <button>Remove</button>
-    <hr>
-  </div>`;
+    const bookEl = document.createElement("div");
+    bookEl.classList.add("book");
+    bookEl.innerHTML = `<div class="book">
+        <p class="title">${book.title}</p>
+        <p class="author">${book.author}</p>
+        <button  class = 'removeButton-${book.id}' id='${book.id}' >Remove</button>
+        <hr>
+      </div>`;
 
-    containerEl.innerHTML += bookEl;
+    booksContainer.appendChild(bookEl);
+    const removeButton = document.querySelector(`.removeButton-${book.id}`);
+    removeButton.addEventListener("click", () => {
+      BooksCollection.remove(book.id);
+    });
   });
 };
 
-renderBooks();
+// add data
+form.addEventListener('submit', (e) => {
+    e.preventDefault()
+    BooksCollection.add(title.value, author.value)
+})
+
+loadData();
