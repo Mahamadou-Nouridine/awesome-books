@@ -5,24 +5,27 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="./script/script.js" defer type="module"></script>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
     <title>Awesome Books</title>
   </head>
 
   <body>
-    <h1>Awesome books</h1>
-    <div class="books-container"></div>
+    <div class="container">
+      <h1>Awesome books</h1>
+      <div class="books"></div>
 
-    <form class="form" action="#">
-      <div class="form-control">
-        <input type="text" id="title" placeholder="Title" />
-      </div>
-      <br />
-      <div class="form-control">
-        <input type="text" id="author" placeholder="Author" />
-      </div>
-      <br />
-      <button>Add</button>
-    </form>
+      <span></span>
+      <h4>Add a new book</h4>
+
+      <form id="form" action="#">
+        <div class="form-control">
+          <input type="text" id="title" placeholder="title" />
+        </div>
+        <div class="form-control">
+          <input type="text" id="author" placeholder="author" />
+        </div>
+        <button>Add</button>
+      </form>
+    </div>
   </body>
 </html>
