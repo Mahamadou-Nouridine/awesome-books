@@ -11,18 +11,29 @@
 
   <body>
     <h1>Awesome books</h1>
-    <div class="books-container"></div>
+    <div class="books-container">
+    </div>
+    <p class="no-book">No book</p>
+    
+
+    <div class="divider">
+      <span></span>
+      <span>(<<<<<>>>>>>)</span>
+      <span>
+      </span>
+    </div>
 
     <form class="form" action="#">
+      <h2>Add a new book</h2>
       <div class="form-control">
-        <input type="text" id="title" placeholder="Title" />
+        <input required type="text" id="title" placeholder="Title" />
       </div>
       <br />
       <div class="form-control">
-        <input type="text" id="author" placeholder="Author" />
+        <input required type="text" id="author" placeholder="Author" />
       </div>
       <br />
-      <button>Add</button>
+      <button class="add-button">Add</button>
     </form>
   </body>
 </html>

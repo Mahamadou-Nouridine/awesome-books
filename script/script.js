@@ -1,58 +1,67 @@
-import data from './data.js';
-
 const booksContainer = document.querySelector('.books-container');
 const form = document.querySelector('.form');
 const titleEl = document.querySelector('#title');
 const authorEl = document.querySelector('#author');
+const noBook = document.querySelector('.no-book');
 
-const localData = localStorage.getItem('books');
-if (!localData) localStorage.setItem('books', JSON.stringify(data));
-let books = JSON.parse(localStorage.getItem('books'));
+const saveLocally = (data) => {
+  localStorage.setItem('books', JSON.stringify(data));
+};
 
-const saveLocally = () => {
-  localStorage.setItem('books', JSON.stringify(books));
+const displayNoBook = (bookLength) => {
+  noBook.style.setProperty('display', `${bookLength ? 'none' : 'block'}`);
+  booksContainer.style.setProperty('display', `${!bookLength ? 'none' : 'block'}`);
 };
 
 class BooksCollection {
-    static add = (title, author, id = Date.now()) => {
-      books.push({ title, author, id });
-      saveLocally();
+  constructor() {
+    let localData = localStorage.getItem('books');
+    if (!localData) localStorage.setItem('books', JSON.stringify([]));
+    localData = localStorage.getItem('books');
+    this.books = JSON.parse(localData);
+  }
+
+    add = (title, author, id = Date.now()) => {
+      this.books.push({ title, author, id });
+      saveLocally(this.books);
       titleEl.value = '';
       authorEl.value = '';
     };
 
-    static remove = (id) => {
-      const remainingData = books.filter((book) => book.id !== id);
-      books = remainingData;
-      saveLocally();
+    remove = (id) => {
+      const remainingData = this.books.filter((book) => book.id !== id);
+      this.books = remainingData;
+      saveLocally(this.books);
     };
 }
 
+const collection = new BooksCollection();
+
 const loadData = () => {
   booksContainer.innerHTML = '';
-  books.forEach((book) => {
+  collection.books.forEach((book, key) => {
     const bookEl = document.createElement('div');
     bookEl.classList.add('book');
-    bookEl.innerHTML = `<div class="book">
-          <p class="title">${book.title}</p>
-          <p class="author">${book.author}</p>
-          <button  class = 'removeButton-${book.id}' id='${book.id}' >Remove</button>
-          <hr>
-        </div>`;
+    bookEl.classList.add(`book-${key % 2 === 0 ? 'grey' : 'white'}`);
+    bookEl.innerHTML = `
+          <p class="title">${book.title} by ${book.author}</p>
+          <button  id = 'removeButton-${book.id}' class='remove-button' >Remove</button>
+`;
 
     booksContainer.appendChild(bookEl);
-    const removeButton = document.querySelector(`.removeButton-${book.id}`);
+    const removeButton = document.querySelector(`#removeButton-${book.id}`);
     removeButton.addEventListener('click', () => {
-      BooksCollection.remove(book.id);
+      collection.remove(book.id);
       loadData();
     });
   });
+  displayNoBook(collection.books.length);
 };
 
 // add data
 form.addEventListener('submit', (e) => {
   e.preventDefault();
-  BooksCollection.add(titleEl.value, authorEl.value);
+  collection.add(titleEl.value, authorEl.value);
   loadData();
 });
 
