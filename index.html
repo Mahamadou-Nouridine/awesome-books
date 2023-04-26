@@ -10,30 +10,62 @@
   </head>
 
   <body>
-    <h1>Awesome books</h1>
-    <div class="books-container">
-    </div>
-    <p class="no-book">No book</p>
+
+    <header>
+      <nav>
+        <Strong>Awesome Books</Strong>
+        <ul class="nav-links">
+          <li class="nav-link" id="nav-list"><p>List</p></li>
+          <hr class="nav-separator">
+          <li class="nav-link" id="nav-new"><p>Add new</p></li>
+          <hr class="nav-separator">
+          <li class="nav-link" id="nav-contact"><p>Contact</p></li>
+        </ul>
+      </nav>
+      <h5>March 19th 2021, 9:25:32 am</h5>
+    </header>
+
+    <main>
+    <section class="list-section" id="list">
+      <h1>Awesome books</h1>
+      <div class="books-container">
+      </div>
+      <p class="no-book">No book</p>
+    </section>
     
+    <section class="form-section" id="new">
+      <form class="form" action="#">
+        <h2>Add a new book</h2>
+        <div class="form-control">
+          <input required type="text" id="title" placeholder="Title" />
+        </div>
+        <br />
+        <div class="form-control">
+          <input required type="text" id="author" placeholder="Author" />
+        </div>
+        <br />
+        <button class="add-button">Add</button>
+      </form>
+    </section>
 
-    <div class="divider">
-      <span></span>
-      <span>(<<<<<>>>>>>)</span>
-      <span>
-      </span>
-    </div>
+    <section class="contact-section" id="contact">
+      <div class="contact-container">
+        <h2>Contact information</h2>
+        <p>
+          Do you have any question or you jus need to say "Hello"? <br>
+          You can reach out to us!
+          <ul>
+            <li>Our e-mail: mail@mail.com</li>
+            <li>Our phone number: 001145553388</li>
+            <li>Our Address: Streetname 22, 5000 city, country</li>
+          </ul>
+        </p>
+      </div>
+    </section>
 
-    <form class="form" action="#">
-      <h2>Add a new book</h2>
-      <div class="form-control">
-        <input required type="text" id="title" placeholder="Title" />
-      </div>
-      <br />
-      <div class="form-control">
-        <input required type="text" id="author" placeholder="Author" />
-      </div>
-      <br />
-      <button class="add-button">Add</button>
-    </form>
+    </main>
+    <footer>
+      Copyright ...
+    </footer>
   </body>
 </html>
