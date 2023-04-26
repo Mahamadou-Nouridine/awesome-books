@@ -6,16 +6,21 @@
 }
 
 main {
-  height: calc(100vh - 30px);
+  height: calc(100vh - 128px);
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
 }
 
+header > h5 {
+  text-align: end;
+  width: 100%;
+  margin-top: 0;
+}
+
 header {
   width: 100%;
-  /* align-self: start; */
 }
 
 nav {
@@ -28,15 +33,15 @@ nav {
 }
 
 .nav-links {
-  list-style-type:none ;
+  list-style-type: none;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.nav-link a {
+.nav-link p{
   text-decoration: none;
-  color: unset;
+  cursor: pointer;
 }
 
 .nav-separator {
@@ -44,7 +49,6 @@ nav {
   border: solid 1px black;
   background-color: #000;
   margin: 0 10px;
-
 }
 
 nav {
@@ -53,8 +57,27 @@ nav {
 
 input::placeholder {
   color: black;
+  font-size: 20px;
 }
 
+section {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+input {
+  width: 100%;
+  height: 35px;
+}
 
 .book {
   display: flex;
@@ -71,6 +94,15 @@ input {
   width: 100%;
   max-width: 500px;
   border: 3px solid black;
+}
+
+.form {
+  width: 100%;
+  max-width: 500px;
+}
+
+.form-control {
+  width: 100%;
 }
 
 .book-grey {
@@ -155,4 +187,22 @@ button {
   background-image: -moz-linear-gradient(180deg, #000, transparent);
   background-image: -o-linear-gradient(180deg, #000, transparent);
   background-image: linear-gradient(90deg, #000, transparent);
+}
+
+.contact-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  max-width: 500px;
+}
+
+.contact-container ul {
+  align-self: start;
+}
+
+footer {
+  border: 3px solid black;
+  padding: 10px 15px;
 }
