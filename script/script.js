@@ -3,8 +3,8 @@ const form = document.querySelector('.form');
 const titleEl = document.querySelector('#title');
 const authorEl = document.querySelector('#author');
 const noBook = document.querySelector('.no-book');
-const sections = document.querySelectorAll('section')
-const navLinks = document.querySelectorAll('.nav-link')
+const sections = document.querySelectorAll('section');
+const navLinks = document.querySelectorAll('.nav-link');
 
 const saveLocally = (data) => {
   localStorage.setItem('books', JSON.stringify(data));
@@ -73,28 +73,25 @@ const selectSection = (section) => {
   document.querySelector(`#nav-${section.id} p`).style.setProperty('color', 'blue');
   navLinks.forEach((link) => {
     if (link.id !== `nav-${section.id}`) {
-      console.log(link.querySelector('p'));
-      link.querySelector('p').style.setProperty('color', 'unset')
+      link.querySelector('p').style.setProperty('color', 'unset');
     }
   });
-
 
   sections.forEach((sec) => {
     if (sec.id !== section.id) {
-      sec.style.setProperty('display', 'none')
+      sec.style.setProperty('display', 'none');
     }
 
-    section.style.setProperty('display', 'flex')
+    section.style.setProperty('display', 'flex');
   });
 };
 
-navLinks.forEach(navLink => {
-  navLink.addEventListener('click', ()=> {
-    const id = navLink.id.split('-')[1]
-    const section = document.querySelector('#'+id)
-    // console.log(section);
-    selectSection(section)
-  })
-})
+navLinks.forEach((navLink) => {
+  navLink.addEventListener('click', () => {
+    const id = navLink.id.split('-')[1];
+    const section = document.querySelector(`#${id}`);
+    selectSection(section);
+  });
+});
 
-selectSection(document.querySelector('#list'))
+selectSection(document.querySelector('#list'));

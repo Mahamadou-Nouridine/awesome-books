@@ -30,6 +30,7 @@ nav {
   padding: 0 15px;
   width: 100%;
   height: 30px;
+  border: 3px solid black;
 }
 
 .nav-links {
@@ -39,7 +40,7 @@ nav {
   align-items: center;
 }
 
-.nav-link p{
+.nav-link p {
   text-decoration: none;
   cursor: pointer;
 }
@@ -49,10 +50,6 @@ nav {
   border: solid 1px black;
   background-color: #000;
   margin: 0 10px;
-}
-
-nav {
-  border: 3px solid black;
 }
 
 input::placeholder {
@@ -69,6 +66,8 @@ section {
 }
 
 .form {
+  width: 100%;
+  max-width: 500px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -96,11 +95,6 @@ input {
   border: 3px solid black;
 }
 
-.form {
-  width: 100%;
-  max-width: 500px;
-}
-
 .form-control {
   width: 100%;
 }
@@ -123,70 +117,6 @@ button {
   position: relative;
   margin-right: 0;
   margin-left: calc(100% - 40px);
-}
-
-/* divider  */
-.divider {
-  /* minor cosmetics */
-  display: table;
-  font-size: 24px;
-  text-align: center;
-  width: 75%; /* divider width */
-  margin: 40px auto; /* spacing above/below */
-}
-
-.divider span {
-  display: table-cell;
-  position: relative;
-}
-
-.divider span:first-child,
-.divider span:last-child {
-  width: 50%;
-  top: 13px; /* adjust vertical align */
-  -moz-background-size: 100% 2px; /* line width */
-  background-size: 100% 2px; /* line width */
-  background-position: 0 0, 0 100%;
-  background-repeat: no-repeat;
-}
-
-.divider span:first-child {
-  /* color changes in here */
-  background-image:
-    -webkit-gradient(
-      linear,
-      0 0,
-      0 100%,
-      from(transparent),
-      to(#000)
-    );
-  background-image: -webkit-linear-gradient(180deg, transparent, #000);
-  background-image: -moz-linear-gradient(180deg, transparent, #000);
-  background-image: -o-linear-gradient(180deg, transparent, #000);
-  background-image: linear-gradient(90deg, transparent, #000);
-}
-
-.divider span:nth-child(2) {
-  color: #000;
-  padding: 0 5px;
-  width: auto;
-  white-space: nowrap;
-}
-
-.divider span:last-child {
-  /* color changes in here */
-  background-image:
-    -webkit-gradient(
-      linear,
-      0 0,
-      0 100%,
-      from(#000),
-      to(transparent)
-    );
-  background-image: -webkit-linear-gradient(180deg, #000, transparent);
-  background-image: -moz-linear-gradient(180deg, #000, transparent);
-  background-image: -o-linear-gradient(180deg, #000, transparent);
-  background-image: linear-gradient(90deg, #000, transparent);
 }
 
 .contact-container {
